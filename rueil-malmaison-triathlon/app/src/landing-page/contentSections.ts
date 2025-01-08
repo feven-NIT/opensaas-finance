@@ -69,12 +69,10 @@ export const faqs = [
 ];
 export const footerNavigation = {
   app: [
-    { name: 'Documentation', href: DocsUrl },
-    { name: 'Blog', href: BlogUrl },
+    { name: 'Les Horaires', href: '#horaires' }, // Remplacez par la page des horaires
+    { name: 'Les Lieux', href: '/lieux' }, // Remplacez par la page des lieux
   ],
   company: [
-    { name: 'About', href: 'https://wasp-lang.dev' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
+    { name: 'Mentions Légales', href: '/mentions-legales' }, // Remplacez par la page des mentions légales
   ],
 };

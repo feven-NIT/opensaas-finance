@@ -28,8 +28,6 @@ export const paymentPlanCards: Record<PaymentPlanId, PaymentPlanCard> = {
   },
 };
 
-
-
 const PricingPage = () => {
   const [isPaymentLoading, setIsPaymentLoading] = useState<boolean>(false);
   
@@ -85,23 +83,29 @@ const PricingPage = () => {
   return (
     <div className='py-10 lg:mt-10'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-      <div id='club-triathlon' className='mx-auto max-w-4xl text-center'>
-        <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-          Rejoignez le <span className='text-yellow-500'>Club de Triathlon</span> de Rueil-Malmaison
-        </h2>
-        <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600 dark:text-white'>
-          Vous avez plus de 18 ans et savez déjà nager ? Que vous soyez débutant ou expérimenté, le Club de Triathlon de Rueil-Malmaison vous accueille. 
-          Profitez d’entraînements adaptés et d’une ambiance conviviale ! 
-          Inscrivez-vous dès maintenant pour réserver votre place : 50 places disponibles.
-        </p>
-      </div>
+        
+        {/* Avertissement d'inscription */}
+        <div className="bg-red-500 text-white text-center py-4 mb-8">
+          <p className="text-lg font-bold">Attention : Les inscriptions ne sont pas encore ouvertes. Elles seront accessibles à partir de juin 2025.</p>
+        </div>
 
-        <div className='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:gap-x-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
+        <div id='club-triathlon' className='mx-auto max-w-4xl text-center'>
+          <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
+            Rejoignez le <span className='text-yellow-500'>Club de Triathlon</span> de Rueil-Malmaison
+          </h2>
+          <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600 dark:text-white'>
+            Vous avez plus de 18 ans et savez déjà nager ? Que vous soyez débutant ou expérimenté, le Club de Triathlon de Rueil-Malmaison vous accueille. 
+            Profitez d’entraînements adaptés et d’une ambiance conviviale ! 
+            Inscrivez-vous dès maintenant pour réserver votre place : 50 places disponibles.
+          </p>
+        </div>
+
+        <div className='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:gap-x-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-1'>
           {Object.values(PaymentPlanId).map((planId) => (
             <div
               key={planId}
               className={cn(
-                'relative flex flex-col grow justify-between rounded-3xl ring-gray-900/10 dark:ring-gray-100/10 overflow-hidden p-8 xl:p-10',
+                'relative flex flex-col justify-between rounded-3xl ring-gray-900/10 dark:ring-gray-100/10 overflow-hidden p-8 xl:p-10',
                 {
                   'ring-2': planId === bestDealPaymentPlanId,
                   'ring-1 lg:mt-8': planId !== bestDealPaymentPlanId,
@@ -188,6 +192,7 @@ const PricingPage = () => {
             </div>
           ))}
         </div>
+
       </div>
     </div>
   );

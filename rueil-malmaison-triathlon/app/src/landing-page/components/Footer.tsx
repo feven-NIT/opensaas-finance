@@ -5,9 +5,9 @@ interface NavigationItem {
 
 export default function Footer({ footerNavigation }: {
   footerNavigation: {
-    app: NavigationItem[]
-    company: NavigationItem[]
-  }
+    app: NavigationItem[];
+    company: NavigationItem[];
+  };
 }) {
   return (
     <div className='mx-auto mt-6 max-w-7xl px-6 lg:px-8 dark:bg-boxdark-2'>
@@ -27,18 +27,36 @@ export default function Footer({ footerNavigation }: {
           </p>
         </div>
         <div className='flex items-start justify-between mt-10 gap-20'>
+          {/* Section Le Club */}
           <div>
             <h3 className='text-sm font-semibold leading-6 text-gray-900 dark:text-white'>Le club</h3>
             <ul role='list' className='mt-6 space-y-4'>
-              {footerNavigation.app.map((item) => (
-                <li key={item.name}>
-                  <a href={item.href} className='text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-white'>
-                    {item.name}
-                  </a>
-                </li>
-              ))}
+              <li>
+                <ul role='list' className='mt-2 space-y-2'>
+                  {footerNavigation.app.filter(item => item.name === 'Les Horaires').map((item) => (
+                    <li key={item.name}>
+                      <a href={item.href} className='text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-white'>
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <ul role='list' className='mt-2 space-y-2'>
+                  {footerNavigation.app.filter(item => item.name === 'Les Lieux').map((item) => (
+                    <li key={item.name}>
+                      <a href={item.href} className='text-sm leading-6 text-gray-600 hover:text-gray-900 dark:text-white'>
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             </ul>
           </div>
+
+          {/* Section Nous Contacter */}
           <div>
             <h3 className='text-sm font-semibold leading-6 text-gray-900 dark:text-white'>Nous contacter</h3>
             <ul role='list' className='mt-6 space-y-4'>
@@ -49,8 +67,9 @@ export default function Footer({ footerNavigation }: {
               </li>
             </ul>
           </div>
+
+          {/* Section Mentions Légales */}
           <div>
-            <h3 className='text-sm font-semibold leading-6 text-gray-900 dark:text-white'>Les Horaires</h3>
             <ul role='list' className='mt-6 space-y-4'>
               {footerNavigation.company.map((item) => (
                 <li key={item.name}>
