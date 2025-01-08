@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../client/cn';
 
-const bestDealPaymentPlanId: PaymentPlanId = PaymentPlanId.Pro;
+const bestDealPaymentPlanId: PaymentPlanId = PaymentPlanId.Hobby;
 
 interface PaymentPlanCard {
   name: string;
@@ -17,24 +17,18 @@ interface PaymentPlanCard {
 
 export const paymentPlanCards: Record<PaymentPlanId, PaymentPlanCard> = {
   [PaymentPlanId.Hobby]: {
-    name: prettyPaymentPlanName(PaymentPlanId.Hobby),
-    price: '$9.99',
-    description: 'All you need to get started',
-    features: ['Limited monthly usage', 'Basic support'],
-  },
-  [PaymentPlanId.Pro]: {
-    name: prettyPaymentPlanName(PaymentPlanId.Pro),
-    price: '$19.99',
-    description: 'Our most popular plan',
-    features: ['Unlimited monthly usage', 'Priority customer support'],
-  },
-  [PaymentPlanId.Credits10]: {
-    name: prettyPaymentPlanName(PaymentPlanId.Credits10),
-    price: '$9.99',
-    description: 'One-time purchase of 10 credits for your account',
-    features: ['Use credits for e.g. OpenAI API calls', 'No expiration date'],
+    name: 'Inscription Club de Triathlon',
+    price: '300 €',
+    description: 'Entraînements encadrés pour les passionnés de triathlon',
+    features: [
+      'Entraînements de natation avec entraîneur',
+      'Entraînements de course à pied avec entraîneur',
+      'Séances de groupe de vélo organisées par les membres',
+    ],
   },
 };
+
+
 
 const PricingPage = () => {
   const [isPaymentLoading, setIsPaymentLoading] = useState<boolean>(false);
@@ -91,16 +85,17 @@ const PricingPage = () => {
   return (
     <div className='py-10 lg:mt-10'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-        <div id='pricing' className='mx-auto max-w-4xl text-center'>
-          <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-            Pick your <span className='text-yellow-500'>pricing</span>
-          </h2>
-        </div>
+      <div id='club-triathlon' className='mx-auto max-w-4xl text-center'>
+        <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
+          Rejoignez le <span className='text-yellow-500'>Club de Triathlon</span> de Rueil-Malmaison
+        </h2>
         <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600 dark:text-white'>
-          Choose between Stripe and LemonSqueezy as your payment provider. Just add your Product IDs! Try it
-          out below with test credit card number <br />
-          <span className='px-2 py-1 bg-gray-100 rounded-md text-gray-500'>4242 4242 4242 4242 4242</span>
+          Vous avez plus de 18 ans et savez déjà nager ? Que vous soyez débutant ou expérimenté, le Club de Triathlon de Rueil-Malmaison vous accueille. 
+          Profitez d’entraînements adaptés et d’une ambiance conviviale ! 
+          Inscrivez-vous dès maintenant pour réserver votre place : 50 places disponibles.
         </p>
+      </div>
+
         <div className='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:gap-x-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3'>
           {Object.values(PaymentPlanId).map((planId) => (
             <div
@@ -140,7 +135,7 @@ const PricingPage = () => {
                     {paymentPlanCards[planId].price}
                   </span>
                   <span className='text-sm font-semibold leading-6 text-gray-600 dark:text-white'>
-                    {paymentPlans[planId].effect.kind === 'subscription' && '/month'}
+                    {paymentPlans[planId].effect.kind === 'subscription' && '/an'}
                   </span>
                 </p>
                 <ul role='list' className='mt-8 space-y-3 text-sm leading-6 text-gray-600 dark:text-white'>
@@ -187,7 +182,7 @@ const PricingPage = () => {
                   )}
                   disabled={isPaymentLoading}
                 >
-                  {!!user ? 'Buy plan' : 'Log in to buy plan'}
+                  {!!user ? 'inscription' : 'Connectez-vous pour vous inscrire'}
                 </button>
               )}
             </div>

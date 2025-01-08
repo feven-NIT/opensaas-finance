@@ -1,4 +1,6 @@
 import openSaasBannerWebp from '../../client/static/open-saas-banner.webp';
+import { Link } from 'react-router-dom';
+import { routes } from 'wasp/client/router';
 import { DocsUrl } from '../../shared/common';
 
 export default function Hero() {
@@ -13,12 +15,12 @@ export default function Hero() {
               Rejoins l’aventure, dépasse tes limites avec notre club de triathlon !  
             </h1>
             <div className='mt-10 flex items-center justify-center gap-x-6'>
-              <a
-                href={DocsUrl}
+              <Link
+                to={routes.PricingPageRoute.to}  // Assurez-vous que la route est correctement définie
                 className='rounded-md px-3.5 py-2.5 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-200 hover:ring-2 hover:ring-yellow-300 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 dark:text-white'
               >
-                Get Started <span aria-hidden='true'>→</span>
-              </a>
+                Inscription au club <span aria-hidden='true'>→</span>
+              </Link>
             </div>
           </div>
           <div className='mt-14 flow-root sm:mt-14'>
