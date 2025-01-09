@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:13
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=somewordpress
+      - POSTGRES_DB=wordpress
+      - POSTGRES_USER=wordpress
+    expose:
+      - 5432
+
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - /etc/letsencrypt/live/rueil-malmaison-triathlon.fr:/etc/letsencrypt/live/rueil-malmaison-triathlon.fr:ro
+      - /etc/letsencrypt/archive/rueil-malmaison-triathlon.fr:/etc/letsencrypt/archive/rueil-malmaison-triathlon.fr:ro
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - wordpress
+    restart: always
+
+volumes:
+  db_data:
+  wp_data:
+  letsencrypt_data:
