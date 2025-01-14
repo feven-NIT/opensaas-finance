@@ -16,8 +16,8 @@ services:
       - "5432:5432"
 
   app:
-    image: quay.io/florian_even/opensaas-rmt
-    container_name: app
+    image: quay.io/florian_even/opensaas-backend
+    container_name: backend
     env_file:
       - /Users/florian/Desktop/dev/triathlon/opensaas/rueil-malmaison-triathlon/app/.env.server
     networks:
