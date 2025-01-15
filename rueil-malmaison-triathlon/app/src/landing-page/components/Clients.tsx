@@ -23,36 +23,39 @@ export default function Schedule() {
         Horaires du Club de Triathlon
       </h2>
 
-      <table className='mx-auto w-full max-w-4xl border-collapse border border-[#ff0454]'>
-        <thead>
-          <tr className='bg-[#ff0454] text-white'>
-            <th className='border border-[#ff0454] px-4 py-2'>Sport / Jour</th>
-            {days.map((day, index) => (
-              <th key={index} className='border border-[#ff0454] px-4 py-2'>{day}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
-            <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Sport</td>
-            {days.map((day, index) => (
-              <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].sport}</td>
-            ))}
-          </tr>
-          <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
-            <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Horaire</td>
-            {days.map((day, index) => (
-              <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].time}</td>
-            ))}
-          </tr>
-          <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
-            <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Lieu</td>
-            {days.map((day, index) => (
-              <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].location}</td>
-            ))}
-          </tr>
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+        <table className='mx-auto w-full max-w-4xl border-collapse border border-[#ff0454]'>
+          <thead>
+            <tr className='bg-[#ff0454] text-white'>
+              <th className='border border-[#ff0454] px-4 py-2'>Sport / Jour</th>
+              {days.map((day, index) => (
+                <th key={index} className='border border-[#ff0454] px-4 py-2'>{day}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
+              <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Sport</td>
+              {days.map((day, index) => (
+                <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].sport}</td>
+              ))}
+            </tr>
+            <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
+              <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Horaire</td>
+              {days.map((day, index) => (
+                <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].time}</td>
+              ))}
+            </tr>
+            <tr className='odd:bg-white even:bg-gray-100 dark:odd:bg-gray-900 dark:even:bg-gray-800'>
+              <td className='border border-[#ff0454] px-4 py-2 text-center font-semibold'>Lieu</td>
+              {days.map((day, index) => (
+                <td key={index} className='border border-[#ff0454] px-4 py-2 text-center'>{schedule[day].location}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
+
