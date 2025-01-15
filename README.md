@@ -25,7 +25,7 @@ podman push quay.io/florian_even/opensaas-backend:latest
 ```shell
 cd ./app/.wasp/build/web-app
 npm install
-REACT_APP_API_URL=http://localhost:3001 npm run build
+REACT_APP_API_URL=https://api.rueil-malmaison-triathlon.fr npm run build
 ```
 
 # Build image 
@@ -35,7 +35,7 @@ REACT_APP_API_URL=http://localhost:3001 npm run build
 FROM nginx:alpine AS web-app-production
 
 # Définit la variable d'environnement pour le port
-ENV SERVER_PORT=3000
+ENV SERVER_PORT=80
 
 # Copie les fichiers de construction dans le répertoire attendu par NGINX
 COPY ./build /usr/share/nginx/html
@@ -87,7 +87,13 @@ podman  run -it  quay.io/florian_even/opensaas-frontend
 # Start opensaas in docker environnement
 
 ```shell
-docker-compose up -d
+sudo docker compose up -d
+```
+
+# Activate ssl
+
+```shell
+docker compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
 ```
 
 
