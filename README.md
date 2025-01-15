@@ -34,14 +34,11 @@ REACT_APP_API_URL=https://api.rueil-malmaison-triathlon.fr npm run build
 # Utilise l'image officielle NGINX
 FROM nginx:alpine AS web-app-production
 
-# Définit la variable d'environnement pour le port
-ENV SERVER_PORT=80
-
 # Copie les fichiers de construction dans le répertoire attendu par NGINX
 COPY ./build /usr/share/nginx/html
 
-# Expose le port configuré
-EXPOSE $SERVER_PORT
+# Expose les ports 80 et 443 pour HTTP et HTTPS
+EXPOSE 80 443
 ```
 
 ```shell
