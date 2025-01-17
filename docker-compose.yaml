@@ -14,7 +14,7 @@ services:
       - "5432:5432"
 
   backend:
-    image: quay.io/florian_even/opensaas-backend
+    image: quay.io/florian_even/opensaas-finance-backend
     container_name: backend
     env_file:
       - env.server
@@ -26,20 +26,13 @@ services:
       - "3001:3001"
 
   frontend:
-    image: quay.io/florian_even/opensaas-frontend:latest
+    image: quay.io/florian_even/opensaas-finance-frontend:latest
     ports:
       - 80:80
       - 443:443
     restart: always
     volumes:
       - ./nginx/conf/:/etc/nginx/conf.d/:ro
-      - ./certbot/www:/var/www/certbot/:ro
-      - ./certbot/conf/:/etc/nginx/ssl/:ro
-  certbot:
-    image: certbot/certbot:latest
-    volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
 
 networks:
   mynet:

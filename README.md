@@ -25,8 +25,8 @@ cd .wasp/build/
 Replace in Dockerfile EXPOSE $PORT by EXPOSE 3000
 
 ```shell
-podman build . -t quay.io/florian_even/opensaas-backend:latest
-podman push quay.io/florian_even/opensaas-backend:latest
+podman build . -t quay.io/florian_even/opensaas-finance-backend:latest
+podman push quay.io/florian_even/opensaas-finance-backend:latest
 ```
 
 # Wasp Build frontend 
@@ -34,7 +34,7 @@ podman push quay.io/florian_even/opensaas-backend:latest
 ```shell
 cd ./app/.wasp/build/web-app
 npm install
-REACT_APP_API_URL=https://api.rueil-malmaison-triathlon.fr npm run build
+REACT_APP_API_URL=http://34.46.84.226.nip.io:3001 npm run build
 ```
 
 # Build frontend image 
@@ -53,8 +53,8 @@ EXPOSE 80 443
 ```
 
 ```shell
-podman build . -t quay.io/florian_even/opensaas-frontend:latest
-podman push quay.io/florian_even/opensaas-frontend:latest
+podman build . -t quay.io/florian_even/opensaas-finance-frontend:latest
+podman push quay.io/florian_even/opensaas-finance-frontend:latest
 ```
 
 # Start opensaas in docker environnement
