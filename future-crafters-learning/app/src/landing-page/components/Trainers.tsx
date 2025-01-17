@@ -1,7 +1,7 @@
 import React from 'react';
-import LogoDauphine from '../images/logo-dauphine.jpg';
-import LogoHec from '../images/logo-hec.jpg';
-import LogoMoelis from '../images/logo-moelis.png';
+import LogoDauphine from '../images/Logo-dauphine.jpg';
+import LogoHec from '../images/Logo-hec.jpg';
+import LogoMoelis from '../images/Logo-moelis.png';
 import LogoCarlyle from '../images/Logo-carlyle.png';
 import LogoUbs from '../images/Logo-ubs.png';
 
