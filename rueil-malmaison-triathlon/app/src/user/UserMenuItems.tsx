@@ -25,11 +25,11 @@ export const UserMenuItems = ({ user, setMobileMenuOpen }: { user?: Partial<User
         {path === landingPagePath || path === adminDashboardPath ? (
           <li>
             <WaspRouterLink
-              to={routes.FileUploadRoute.to}
+              to={routes.PricingPageRoute.to}
               className='flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-yellow-500'
             >
               <MdOutlineSpaceDashboard size='1.1rem' />
-              Mes Documents
+              Our Services
             </WaspRouterLink>
           </li>
         ) : null}

@@ -3,12 +3,12 @@ import { requireNodeEnvVar } from '../server/utils';
 export type SubscriptionStatus = 'past_due' | 'cancel_at_period_end' | 'active' | 'deleted';
 
 export enum PaymentPlanId {
-  Hobby = 'hobby',
+  BreakIntoInterviews = 'break_into_interviews',
+  InterviewsMaster = 'interviews_master',
+  ModellingMaster = 'modelling_master',
 }
 
 export interface PaymentPlan {
-  // Returns the id under which this payment plan is identified on your payment processor. 
-  // E.g. this might be price id on Stripe, or variant id on LemonSqueezy.
   getPaymentProcessorPlanId: () => string;
   effect: PaymentPlanEffect;
 }
@@ -16,15 +16,25 @@ export interface PaymentPlan {
 export type PaymentPlanEffect = { kind: 'subscription' } | { kind: 'credits'; amount: number };
 
 export const paymentPlans: Record<PaymentPlanId, PaymentPlan> = {
-  [PaymentPlanId.Hobby]: {
-    getPaymentProcessorPlanId: () => requireNodeEnvVar('PAYMENTS_HOBBY_SUBSCRIPTION_PLAN_ID'),
+  [PaymentPlanId.BreakIntoInterviews]: {
+    getPaymentProcessorPlanId: () => requireNodeEnvVar('PAYMENTS_BREAK_INTO_INTERVIEWS_PLAN_ID'),
     effect: { kind: 'credits', amount: 1 },
+  },
+  [PaymentPlanId.InterviewsMaster]: {
+    getPaymentProcessorPlanId: () => requireNodeEnvVar('PAYMENTS_INTERVIEWS_MASTER_PLAN_ID'),
+    effect: { kind: 'credits', amount: 2 },
+  },
+  [PaymentPlanId.ModellingMaster]: {
+    getPaymentProcessorPlanId: () => requireNodeEnvVar('PAYMENTS_MODELLING_MASTER_PLAN_ID'),
+    effect: { kind: 'credits', amount: 3 },
   },
 };
 
 export function prettyPaymentPlanName(planId: PaymentPlanId): string {
   const planToName: Record<PaymentPlanId, string> = {
-    [PaymentPlanId.Hobby]: 'Hobby',
+    [PaymentPlanId.BreakIntoInterviews]: 'Pack Break Into Interviews',
+    [PaymentPlanId.InterviewsMaster]: 'Pack Interviews Master',
+    [PaymentPlanId.ModellingMaster]: 'Pack Modelling Master',
   };
   return planToName[planId];
 }

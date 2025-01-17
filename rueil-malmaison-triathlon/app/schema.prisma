@@ -22,7 +22,7 @@ model User {
   subscriptionPlan          String?         // 'hobby', 'pro'
   sendNewsletter            Boolean         @default(false)
   datePaid                  DateTime?
-  credits                   Int             @default(3)
+  credits                   Int             @default(0)
 
   gptResponses              GptResponse[]
   contactFormMessages       ContactFormMessage[]

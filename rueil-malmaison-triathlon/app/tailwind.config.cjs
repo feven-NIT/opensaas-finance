@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        satoshi: ['Satoshi', 'system-ui', 'sans-serif'],
+        alvardo: ['Alvardo', 'system-ui', 'sans-serif'],
       },
+      
       colors: {
         current: 'currentColor',
         transparent: 'transparent',

@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../client/cn';
 
-const bestDealPaymentPlanId: PaymentPlanId = PaymentPlanId.Hobby;
+const bestDealPaymentPlanId: PaymentPlanId = PaymentPlanId.BreakIntoInterviews;
 
 interface PaymentPlanCard {
   name: string;
@@ -16,21 +16,41 @@ interface PaymentPlanCard {
 }
 
 export const paymentPlanCards: Record<PaymentPlanId, PaymentPlanCard> = {
-  [PaymentPlanId.Hobby]: {
-    name: 'Inscription Club de Triathlon',
-    price: '300 €',
-    description: 'Entraînements encadrés pour les passionnés de triathlon',
+  [PaymentPlanId.BreakIntoInterviews]: {
+    name: 'Pack Break Into Interviews',
+    price: '900 €',
+    description: 'Préparez-vous efficacement aux entretiens d’embauche.',
     features: [
-      'Entraînements de natation avec entraîneur',
-      'Entraînements de course à pied avec entraîneur',
-      'Séances de groupe de vélo organisées par les membres',
+      'Entraînement personnalisé aux entretiens',
+      'Simulations d’entretiens',
+      'Support après chaque entretien',
+    ],
+  },
+  [PaymentPlanId.InterviewsMaster]: {
+    name: 'Pack Interviews Master',
+    price: '900 €',
+    description: 'Devenez un expert des entretiens avec des techniques avancées.',
+    features: [
+      'Coaching intensif',
+      'Stratégies avancées pour répondre aux questions difficiles',
+      'Accès à des sessions pratiques',
+    ],
+  },
+  [PaymentPlanId.ModellingMaster]: {
+    name: 'Pack Modelling Master',
+    price: '900 €',
+    description: 'Perfectionnez vos compétences en modélisation de données.',
+    features: [
+      'Formation approfondie en analyse de données',
+      'Ateliers pratiques sur la création de modèles',
+      'Accès à des ressources exclusives',
     ],
   },
 };
 
 const PricingPage = () => {
   const [isPaymentLoading, setIsPaymentLoading] = useState<boolean>(false);
-  
+
   const { data: user } = useAuth();
   const isUserSubscribed = !!user && !!user.subscriptionStatus && user.subscriptionStatus !== 'deleted';
 
@@ -74,7 +94,7 @@ const PricingPage = () => {
     }
 
     if (!customerPortalUrl) {
-      throw new Error(`Customer Portal does not exist for user ${user.id}`)
+      throw new Error(`Customer Portal does not exist for user ${user.id}`);
     }
 
     window.open(customerPortalUrl, '_blank');
@@ -83,24 +103,17 @@ const PricingPage = () => {
   return (
     <div className='py-10 lg:mt-10'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-        
-        {/* Avertissement d'inscription */}
-        <div className="bg-red-500 text-white text-center py-4 mb-8">
-          <p className="text-lg font-bold">Attention : Les inscriptions ne sont pas encore ouvertes. Elles seront accessibles à partir de juin 2025.</p>
-        </div>
-
         <div id='club-triathlon' className='mx-auto max-w-4xl text-center'>
           <h2 className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-            Rejoignez le <span className='text-yellow-500'>Club de Triathlon</span> de Rueil-Malmaison
+            Rejoignez notre programme <span className='text-yellow-500'>d’entraînement intensif</span>
           </h2>
           <p className='mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-600 dark:text-white'>
-            Vous avez plus de 18 ans et savez déjà nager ? Que vous soyez débutant ou expérimenté, le Club de Triathlon de Rueil-Malmaison vous accueille. 
-            Profitez d’entraînements adaptés et d’une ambiance conviviale ! 
-            Inscrivez-vous dès maintenant pour réserver votre place : 50 places disponibles.
+            Préparez-vous aux entretiens et à l'analyse de données avec nos packs sur mesure.
+            Choisissez l’un des packs ci-dessous pour commencer votre parcours dès aujourd’hui.
           </p>
         </div>
 
-        <div className='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:gap-x-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-1'>
+        <div className='isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 lg:grid-cols-3 lg:gap-x-8 sm:mt-20 lg:mx-0 lg:max-w-none'>
           {Object.values(PaymentPlanId).map((planId) => (
             <div
               key={planId}
@@ -192,7 +205,6 @@ const PricingPage = () => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

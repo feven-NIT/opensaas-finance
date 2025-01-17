@@ -1,5 +1,6 @@
 import { type SubscriptionStatus } from '../../../payment/plans';
 import { updateUserById, useQuery, getPaginatedUsers } from 'wasp/client/operations';
+
 import { useState, useEffect } from 'react';
 import SwitcherOne from './SwitcherOne';
 import LoadingSpinner from '../../layout/LoadingSpinner';

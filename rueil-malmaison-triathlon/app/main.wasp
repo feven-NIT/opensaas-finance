@@ -3,7 +3,7 @@ app OpenSaaS {
     version: "^0.15.0"
   },
 
-  title: "Club de Triathlon de Rueil-Malmaison",
+  title: "Future Crafters",
 
   head: [
     "<meta charset='utf-8' />",
@@ -186,6 +186,31 @@ query getAllTasksByUser {
   entities: [Task]
 }
 //#endregion
+
+//#about us
+route AboutUsRoute { path: "/aboutus", to: AboutUsPage }
+page AboutUsPage {
+  component: import AboutUsPage from "@src/aboutus/AboutUsPage"
+}
+
+//#formation
+route BreakIntoInterviewsRoute { path: "/breakintointerviews", to: BreakIntoInterviewsPage }
+page BreakIntoInterviewsPage {
+  authRequired: true,
+  component: import BreakIntoInterviewsPage from "@src/formation/BreakIntoInterviewsPage"
+}
+
+route InterviewsMasterRoute { path: "/interviewsmaster", to: InterviewsMasterPage }
+page InterviewsMasterPage {
+  authRequired: true,
+  component: import InterviewsMasterPage from "@src/formation/InterviewsMasterPage"
+}
+
+route ModellingMasterRoute { path: "/modellinginterviews", to: ModellingMasterPage }
+page ModellingMasterPage {
+  authRequired: true,
+  component: import ModellingMasterPage from "@src/formation/ModellingMasterPage"
+}
 
 //#region Payment
 route PricingPageRoute { path: "/pricing", to: PricingPage }

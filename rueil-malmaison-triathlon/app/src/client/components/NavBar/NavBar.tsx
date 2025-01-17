@@ -28,19 +28,21 @@ export default function AppNavBar({ navigationItems }: { navigationItems: Naviga
   return (
     <header
       className={cn('absolute inset-x-0 top-0 z-50 dark:bg-boxdark-2', {
-        'shadow sticky bg-white bg-opacity-50 backdrop-blur-lg backdrop-filter dark:border dark:border-gray-100/10':
-          !isLandingPage,
+        'shadow sticky bg-[#020048] text-white': !isLandingPage,  // Blue background when not on landing page
+        'bg-transparent text-white': isLandingPage,  // Transparent background when on landing page
       })}
     >
       <nav className='flex items-center justify-between p-6 lg:px-8' aria-label='Global'>
         <div className='flex items-center lg:flex-1'>
           <WaspRouterLink
             to={routes.LandingPageRoute.to}
-            className='flex items-center -m-1.5 p-1.5 text-gray-900 duration-300 ease-in-out hover:text-yellow-500'
+            className='flex items-center -m-1.5 p-1.5 text- duration-300 ease-in-out hover:text-yellow-500'
           >
             <NavLogo />
             {isLandingPage && (
-              <span className='ml-2 text-sm font-semibold leading-6 dark:text-white'>Rueil Malmaison Triathlon</span>
+              <span className="ml-2 text-sm font-semibold leading-6 text-white dark:text-white">
+                Future Crafters Learning
+              </span>
             )}
           </WaspRouterLink>
         </div>
@@ -61,7 +63,7 @@ export default function AppNavBar({ navigationItems }: { navigationItems: Naviga
           </ul>
           {isUserLoading ? null : !user ? (
             <WaspRouterLink to={routes.LoginRoute.to} className='text-sm font-semibold leading-6 ml-3'>
-              <div className='flex items-center duration-300 ease-in-out text-gray-900 hover:text-yellow-500 dark:text-white'>
+              <div className='flex items-center duration-300 ease-in-out text-white hover:text-yellow-500 dark:text-white'>
                 Log in <BiLogIn size='1.1rem' className='ml-1 mt-[0.1rem]' />
               </div>
             </WaspRouterLink>
@@ -95,7 +97,7 @@ export default function AppNavBar({ navigationItems }: { navigationItems: Naviga
               <div className='py-6'>
                 {isUserLoading ? null : !user ? (
                   <WaspRouterLink to={routes.LoginRoute.to}>
-                    <div className='flex justify-end items-center duration-300 ease-in-out text-gray-900 hover:text-yellow-500 dark:text-white'>
+                    <div className='flex justify-end items-center duration-300 ease-in-out text-white hover:text-yellow-500 dark:text-white'>
                       Log in <BiLogIn size='1.1rem' className='ml-1' />
                     </div>
                   </WaspRouterLink>
@@ -119,9 +121,9 @@ function renderNavigationItems(
   setMobileMenuOpen?: Dispatch<SetStateAction<boolean>>
 ) {
   const menuStyles = cn({
-    '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 dark:text-white dark:hover:bg-boxdark-2':
+    '-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-white hover:bg-gray-50 dark:text-white dark:hover:bg-boxdark-2':
       !!setMobileMenuOpen,
-    'text-sm font-semibold leading-6 text-gray-900 duration-300 ease-in-out hover:text-yellow-500 dark:text-white':
+    'text-sm font-semibold leading-6 text-white duration-300 ease-in-out hover:text-yellow-500 dark:text-white':
       !setMobileMenuOpen,
   });
 

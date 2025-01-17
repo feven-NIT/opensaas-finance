@@ -1,29 +1,29 @@
 import type { NavigationItem } from '../client/components/NavBar/NavBar';
-import { routes } from 'wasp/client/router';
 import { DocsUrl, BlogUrl } from '../shared/common';
+import { routes } from 'wasp/client/router';
 import daBoiAvatar from '../client/static/da-boi.webp';
 import avatarPlaceholder from '../client/static/avatar-placeholder.webp';
 
 export const landingPageNavigationItems: NavigationItem[] = [
-  { name: 'Horaires', to: '#horaires' },
-  { name: 'Inscriptions', to: routes.PricingPageRoute.to },
+  { name: 'About Us', to: routes.AboutUsRoute.to },
+  { name: 'Our Services', to: routes.PricingPageRoute.to },
 ];
 export const features = [  
   {  
-    name: 'Natation',  
-    description: 'Perfectionne ta technique dans l’eau avec des entraînements adaptés.',  
+    name: 'Pack 1',  
+    description: 'Break into interviews',  
     icon: '🏊',  
     href: DocsUrl,  
   },  
   {  
-    name: 'Cyclisme',  
-    description: 'Améliore ton endurance et ta vitesse sur des parcours variés.',  
+    name: 'Pack 2',  
+    description: 'Interviews master',  
     icon: '🚴',  
     href: DocsUrl,  
   },  
   {  
-    name: 'Course à pied',  
-    description: 'Optimise ta foulée et ta performance sur piste ou en nature.',  
+    name: 'Pack 3',  
+    description: 'Modelling master',  
     icon: '🏃',  
     href: DocsUrl,  
   },  

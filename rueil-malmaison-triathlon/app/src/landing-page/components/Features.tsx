@@ -10,7 +10,7 @@ export default function Features({ features }: { features: Feature[] }) {
     <div id='features' className='mx-auto mt-48 max-w-7xl px-6 lg:px-8'>
       <div className='mx-auto max-w-2xl text-center'>
         <p className='mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white'>
-        Les <span className='text-yellow-500'>Piliers</span> de Votre Performance
+        Our packages
         </p>
         <p className='mt-6 text-lg leading-8 text-gray-600 dark:text-white'>
           3 disciplines

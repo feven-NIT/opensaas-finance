@@ -11,7 +11,7 @@ curl -sSL https://get.wasp-lang.dev/installer.sh | sh
 # Dev 
 
 ```shell
-podman run -it  --name wasp-dev-db-OpenSaaS-a3167729ef --rm --publish 5432:5432 -v wasp-dev-db-OpenSaaS-a3167729ef:/var/lib/postgresql/data --env POSTGRES_PASSWORD=postgresWaspDevPass --env POSTGRES_USER=postgresWaspDevUser --env POSTGRES_DB=OpenSaaS-a3167729ef postgres
+podman run -it  --name wasp-dev-db-OpenSaaS-2afe81d828 --rm --publish 5432:5432 -v wasp-dev-db-OpenSaaS-2afe81d828:/var/lib/postgresql/data --env POSTGRES_PASSWORD=postgresWaspDevPass --env POSTGRES_USER=postgresWaspDevUser --env POSTGRES_DB=OpenSaaS-2afe81d828 postgres
 wasp start
 ```
 # Prod
